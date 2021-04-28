@@ -1,19 +1,12 @@
-P2 Report
-Project: 
-Used Car Evaluation System
-Team Member: 
-Jiachen Zhou jz3529
-Xian Zheng xz2760
-
 Project Structure:
-Our project mainly includes two major parts, a machine learning part, and a full-stack website.
+The project mainly includes two major parts, a machine learning part, and a full-stack website.
 ------------------------------------------------------------------------------------------------------------------------
 For the Website part:
--We run the server locally on the Node.js server and build on the Express framework; the front-end is rendering on EJS, as for the database we use MySQL. 
+-run the server locally on the Node.js server and build on the Express framework; the front-end is rendering on EJS, as for the database we use MySQL. 
 --------------------------------------------------
 -Here is the file tree under the directory: 
 
--> P2 xianzheng$ tree
+->
 ├── data
 │   ├── Dataset_manufacturer.csv
 │   ├── Dataset_model.csv
