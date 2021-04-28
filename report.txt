@@ -1,0 +1,103 @@
+P2 Report
+Project: 
+Used Car Evaluation System
+Team Member: 
+Jiachen Zhou jz3529
+Xian Zheng xz2760
+
+Project Structure:
+Our project mainly includes two major parts, a machine learning part, and a full-stack website.
+------------------------------------------------------------------------------------------------------------------------
+For the Website part:
+-We run the server locally on the Node.js server and build on the Express framework; the front-end is rendering on EJS, as for the database we use MySQL. 
+--------------------------------------------------
+-Here is the file tree under the directory: 
+
+-> P2 xianzheng$ tree
+├── data
+│   ├── Dataset_manufacturer.csv
+│   ├── Dataset_model.csv
+│   ├── Dataset_vehicles.csv
+│   └── OriginalDataset_vehicles.csv(only submitted on ibm, not nyu classes, since it too large)
+├── instruction.txt
+├── ml
+│   ├── ML_part.py
+│   └── ML_part.ipynb
+├── node_modules
+│   └── …...
+├── others
+│   ├── InportErrorList_vehicles.txt
+│   └── sql.py
+├── package-lock.json
+├── package.json
+├── report.txt
+├── server
+│   ├── connection.js
+│   ├── routes
+│   │   └── home.js
+│   └── server.js
+└── views
+    ├── home.ejs
+    ├── home2.ejs
+    └── result.ejs
+
+--------------------------------------------------
+The following are the quick views of each file, and all the js codes are commented.
+
+-others folder: misc files or scrips uses during data cleaning
+	InportErrorList_vehicles.txt: error log during the first data import
+	sql.py: scripts used during data cleaning
+
+-ml folder: see ml part below
+
+-P2 folder:
+	package.json: my project configure file and dependencies requirement
+	package-lock.json: local dependencies list
+
+-data folder: 
+	OriginalDataset_vehicles.csv: original data set get from Kaggle.
+	Dataset_vehicles.csv: the data after clean.
+		table: vehicles
+		price        text
+		year         text
+		manufacturer text
+		model        text
+		odometer     text
+		image_url    text
+		id           double
+	Dataset_manufacturer.csv: machine learning corresponding int value for string manufacturer, and when calculating the price will look up this table to get manufacturer and index pair.
+		table: manufacturer
+		name  text
+		value int
+	Dataset_model.csv: machine learning corresponding int value for string manufacturer, and when calculating the price will look up this table to get manufacturer and index pair.
+		table: model
+		name  text
+		value int
+
+-node_modules folder: dependencies from node and npm
+
+-server folder:
+	server.js: server control main file
+	connection.js: manage the connection to DB
+	home.js: control all the web pages content
+
+-views folder:
+	home.ejs: home page
+	home2.ejs: second home page(after input manufacturer)
+	result.ejs: page to show the result
+
+--------------------------------------------------
+-Steps to run the website locally: 
+You need to first install node.js and npm(node package manager). Then check if the dependencies meet the requirements of package.json file, usually, they are all included. And I upload all the dependencies installed with node and npm, which included all the needed dependencies(in the node_modules folder), so as long as node and npm are installed, it should be good to go.
+Then create databases named p2 and create tables(vehicles, model, manufacturer) using the CSV data Dataset_vehicles.csv, Dataset_model.csv, Dataset_manufacturer.csv. Don’t forget to change the MySQL connection information in the connection.js file. 
+Then in the terminal, cd to folder P2, type command: npm run dev, this command runs the scripts in package.json file. Then the server should be running locally if the port 8000 is not in use by other applications. 
+Finally, in the browser, go to localhost:8000/home
+------------------------------------------------------------------------------------------------------------------------
+For the ML part:
+	The files about the machine learning part are in the ml folder.
+-ml folder:
+	ML_part.py: 
+	1.Generate two csv files containing a table for manufacturer and its stringindexer manufacturer_VEC; a table for model and its stringindexer model_VEC
+	2.Compute coefficients and intercept for linear regression model
+	ML_part.ipynb: 
+	The original jupyter notebook version of ML_part.py

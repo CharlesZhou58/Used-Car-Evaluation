@@ -1,0 +1,20 @@
+P2 Report
+Project: 
+Used Car Evaluation System
+Team Member: 
+Jiachen Zhou jz3529
+Xian Zheng xz2760
+
+As we discussed in the Report.txt, there are mainly two parts of our design, ml and website, and here are the steps needed to run them.
+------------------------------------------------------------------------------------------------------------------------
+For the Website part:
+As I detail described steps to run the website locally in report.txt: 
+-Steps to run the website locally: 
+You need to first install node.js and npm(node package manager). Then check if the dependencies meet the requirements of package.json file, usually, they are all included. And I upload all the dependencies installed with node and npm, which included all the needed dependencies(in the node_modules folder), so as long as node and npm are installed, it should be good to go.
+Then create databases named p2 and create tables(vehicles, model, manufacturer) using the CSV data Dataset_vehicles.csv, Dataset_model.csv, Dataset_manufacturer.csv. Don’t forget to change the MySQL connection information in the connection.js file. 
+Then in the terminal, cd to folder P2, type command: npm run dev, this command runs the scripts in package.json file. Then the server should be running locally if the port 8000 is not in use by other applications. 
+Finally, in the browser, go to localhost:8000/home
+------------------------------------------------------------------------------------------------------------------------
+For the ML part:
+Either Open and run ML_part.ipynb or run python3 ML_part.py to generate two csv files containing a table for manufacturer and its stringindexer manufacturer_VEC; a table for model and its stringindexer model_VEC; also the coefficients and intercept for linear regression model.
+These two tables will be used as a lookup table for the website part calculation.
